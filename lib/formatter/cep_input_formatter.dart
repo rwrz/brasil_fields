@@ -6,8 +6,7 @@ class CepInputFormatter extends TextInputFormatter {
   final int maxLength = 8;
 
   @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     final newTextLength = newValue.text.length;
     var selectionIndex = newValue.selection.end;
 
@@ -31,8 +30,6 @@ class CepInputFormatter extends TextInputFormatter {
     }
 
     return TextEditingValue(
-      text: newText.toString(),
-      selection: TextSelection.collapsed(offset: selectionIndex),
-    );
+        text: newText.toString(), selection: TextSelection.fromPosition(TextPosition(offset: newText.length)));
   }
 }
